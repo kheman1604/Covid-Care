@@ -30,15 +30,15 @@
                 <h3>Hospital Name:<%=hospital.name%></h3>
                 <h3>Hospital Staff Name:<%=currentUser.ename%></h3>
                 <ul class="one">
-                    <li>Recovered Patients:</li>
-                    <li>Deceased Patients:</li>
-                    <li> Admitted Patients:</li>
+                    <li>Recovered Patients: <%=hospital.recovered%></li>
+                    <li>Deceased Patients: <%=hospital.deceased%></li>
+                    <li> Admitted Patients: <%=hospital.admitted%></li>
                 </ul>
                 <br>
                 <ul class="two">
                     
-                    <li> Ventilator Availability:</li>
-                    <li> Bed Availability:</li>
+                    <li> Ventilator Availability: <%=hospital.ventilators%></li>
+                    <li> Bed Availability: <%=hospital.beds%></li>
                 </ul>
             </div>
 
@@ -50,7 +50,7 @@
 
             </a>
             
-            <a href="/plasmadash">
+            <a href="/allpatients">
                 <div class="card2">
                     <img src="/assets/pat1.jpg" alt="">
                     <h4>View Patient Details</h4>
