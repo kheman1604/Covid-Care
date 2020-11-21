@@ -55,6 +55,13 @@ app.listen(port,process.env.IP,function(){
 	console.log("server started.");
 });
 
+function isAuthenticated(req, res, next){
+if(req.body.user)
+next();
+else
+res.redirect('/login');
+}
+
 app.get("/",function(req,res){
 	res.render("index.ejs",{currentUser:req.user});
 });
@@ -236,4 +243,5 @@ app.post("/addpatient",function(req,res){
 		})
 	});
 
+	
 	
