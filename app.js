@@ -18,12 +18,17 @@ app.use(require("express-session")({
 	saveUninitialized: false
 }));
 
+var transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+	  user: 'covidcare96@gmail.com',
+	  pass: 'covidop123'
+	}
+  });
+
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy({
-    usernameField:'email',
-    passwordField:'password'
-},User.authenticate()) );
+passport.use(new LocalStrategy(User.authenticate()) );
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -42,7 +47,7 @@ app.get("/login",function(req,res,next){
 	res.render("login.ejs",{currentUser:req.user});
 });
 app.post('/login',passport.authenticate('local',{failureRedirect:'/login'}),function(req,res){
-	res.redirect('/');
+	res.redirect('/dash');
 });
 app.get("/reghos",function(req,res,next){
 	res.render("reghos.ejs");
@@ -72,7 +77,7 @@ app.get("/signup",function(req,res){
 
 });
 app.post("/signup",function(req,res){
-	var newUser= new User({username:req.body.username,email:req.body.email});
+	var newUser= new User({username:req.body.username,ename:req.body.ename,hospitalid:req.body.hospital});
 	User.register(newUser,req.body.password,function(err,user){
 		if(err)
 			{
@@ -82,7 +87,7 @@ app.post("/signup",function(req,res){
 		else{
 			var mailOptions = {
 				from: 'covidcare96@gmail.com',
-				to:req.body.email ,
+				to:req.body.username ,
 				subject: 'Sign Up Confirmation',
                 text: "You can now access the portal."
 			  };
@@ -97,6 +102,17 @@ app.post("/signup",function(req,res){
   
 			res.redirect('/login');
 		}
+	});
+});
+app.get("/dash",function(req,res){
+	Hospital.findOne({_id:req.user.hospitalid},function(err,hospital){
+	if(err)
+	console.log(err);
+	else{
+		console.log(hospital)
+		res.render("dash.ejs",{currentUser:req.user,hospital:hospital});
+	}
+
 	});
 });
 

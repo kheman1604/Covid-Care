@@ -6,8 +6,20 @@ var HospitalSchema= new mongoose.Schema({
     phone:String,
     address:String,
     beds:Number,
-    ventilators:Number
- 
+    ventilators:Number,
+    recovered:{
+        type:Number,
+        default:100
+    },
+    deceased:{
+        type:Number,
+        default:50
+    },
+    admitted:{
+        type:Number,
+        default:60
+    }
+
 });
 
 module.exports=mongoose.model('Hospital',HospitalSchema);

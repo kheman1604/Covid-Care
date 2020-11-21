@@ -9,9 +9,6 @@
             <ul>
                 <li style="margin-left: 11%; text-transform: uppercase; color: #2c365d; font-weight: bolder;float: left;font-size: x-large;"><a href="/">COVID CARE</a></li>
                 <div style="float: right;margin-right: 13%;">
-                    <li><a href="/hosdash">Beds</a></li>
-                    <li><a href="/notification">Notifications</a></li>
-                    <li><a href="/contact">Helpline</a></li>
                     <li><a href="/dash">Dashboard</a></li>
                     <li><a href="/analytics">Analytics</a></li>
                     <% if(!currentUser){ %>
@@ -30,16 +27,16 @@
 
             <div class="info">
                 <h1>Welcome To Covid Care</h1>
-                <h3>Hospital Name:</h3>
-                <h3>Hospital Staff Name:</h3>
+                <h3>Hospital Name:<%=hospital.name%></h3>
+                <h3>Hospital Staff Name:<%=currentUser.ename%></h3>
                 <ul>
-                    <li>Recovered Patients:</li>
-                    <li>Deceased Patients:</li>
+                    <li>Recovered Patients:<%=hospital.recovered%></li>
+                    <li>Deceased Patients:<%=hospital.deceased%></li>
                 </ul>
                 <ul>
-                    <li> Admitted Patients:</li>
-                    <li> Ventilator Availability:</li>
-                    <li> Bed Availability:</li>
+                    <li> Admitted Patients:<%=hospital.admitted%></li>
+                    <li> Ventilator Availability:<%=hospital.ventilators%></li>
+                    <li> Bed Availability:<%=hospital.beds%></li>
                 </ul>
             </div>
 

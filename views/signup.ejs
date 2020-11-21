@@ -15,8 +15,8 @@
             <h2>Sign Up Hospital Staff/Management</h2>
             <p class="rightp">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus dolorem quas, itaque doloribus ullam inventore eveniet aliquam earum veniam error, debitis quidem praesentium eligendi? Quae magni eius laborum veniam ad..</p>
             <form method='post' action="/signup">
-                <input type="text" name="username" class="username" placeholder="Enter Name"><br><br>
-                <input type="text" name="email" class="email" placeholder="Enter Email-Id"><br><br>
+                <input type="text" name="username" class="username" placeholder="Enter Email"><br><br>
+                <input type="text" name="ename" class="email" placeholder="Enter Name"><br><br>
                 <select class="email" name="hospital">
                     <% hospitals.forEach(function(h){ %>
                       <option value="<%=h._id%>"><%=h.name%></option>
