@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/viewpat.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        <nav>
+            
+            <ul>
+                <li style="margin-left: 11%; text-transform: uppercase; color: #2c365d; font-weight: bolder;float: left;font-size: x-large;"><a href="/">COVID CARE</a></li>
+                <div style="float: right;margin-right: 14%;">
+                    <li><a href="/hosdash">Beds</a></li>
+                    <li><a href="/notification">Notifications</a></li>
+                    <li><a href="/contact">Helpline</a></li>
+                    <li><a href="/dash">Dashboard</a></li>
+                    <li><a href="/analytics">Analytics</a></li>
+                    <% if(!currentUser){ %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/signup">Signup</a></li>
+                    <%	} else { %>
+                    <li><a href="/logout">Logout</a></li>
+                    <%	} %>	
+                </div>
+               
+            </ul>
+        </nav>
+   
+        <div class="container">
+            <div class="left">
+                <img src="/assets/pat1.jpg" alt="">
+            </div>
+            <div class="right">
+            <h1>Patient Information</h1><br>
+            <ul class=".info">
+                <li>Patient Name:</li><br><br>
+                <li>Patient Address:</li><br><br>
+                <li>Current Symptoms:</li><br><br>
+                <li>Phone Number:</li><br><br>
+                <li>Current Symptoms:</li><br><br>
+                <li>Status:</li><br><br>
+                <li>Bloodgroup:</li><br><br>
+                <li>Bed No:</li><br><br>
+                <li>Current Symptoms:</li><br><br>
+            </ul>
+            </div>
+        </div>
+        
+        
+    </body>
+</html>
