@@ -235,3 +235,5 @@ app.post("/addpatient",function(req,res){
 
 		})
 	});
+
+	
