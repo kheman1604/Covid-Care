@@ -75,6 +75,10 @@ app.get("/reghos",function(req,res,next){
 	res.render("reghos.ejs");
 });
 
+app.get("/analytics",function(req,res,next){
+		res.render("anal.ejs",{currentUser:req.user});
+});
+
 app.get('/bot',function(req,res,next){
 	res.render("bot.ejs");
 });
@@ -216,6 +220,7 @@ app.post("/addpatient",function(req,res){
 		});
 	});
 
+	
 	app.get("/modify/:id",function(req,res){
 		Patient.findOne({_id:req.params.id},function(err,result){
 			if(err)
