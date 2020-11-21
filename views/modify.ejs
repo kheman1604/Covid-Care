@@ -28,9 +28,14 @@
 		
 		
 <div class="ocontainer">
-    <h1>Edit Patient Data</h1>
+    <h1>Edit/Delete Patient Data</h1>
     <div class="image"></div>
     <div class="img"></div> 
+      
+            <a href="/modify/<%=patient._id%>/deleted">Delete</a>
+           
+       
+    
     
     <form action="/modify/<%=patient._id%>" method="POST">
         <input type="text" name="name" placeholder="Name" required class="inname" value="<%=patient.name%>"><br>
@@ -51,7 +56,8 @@
         </select>
         <textarea placeholder="Remarks" maxlength="200" value="<%=patient.remarks%>"></textarea><br><br>
 
-        <button>Submit</button>
+        
+        <button>Edit</button>
     </form>
 </div>  
 

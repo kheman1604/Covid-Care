@@ -218,13 +218,20 @@ app.post("/addpatient",function(req,res){
 		});
 	});
 
+	app.get('/modify/:id/deleted',function(req,res){
+		Patient.deleteOne({_id:req.params.id},function(err,result){
+			res.redirect('/dash');
+		});
+		
+	});
+	
 	app.post("/modify/:id",function(req,res){
 
 		var data={name:req.body.name,location:req.body.location,symptoms:req.body.symptoms,contact:req.body.contact,status:req.body.status,bg:req.body.bg,bedno:req.body.bedno,vent:req.body.vent,remarks:req.body.remarks};
 	   
 		Patient.findOneAndUpdate({_id:req.params.id},data,function(err){
 			if (err) console.log(err);
-			return res.redirect('/dash');
+			else res.redirect('/dash');
 
 		})
 	});
