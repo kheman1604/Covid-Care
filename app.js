@@ -76,7 +76,16 @@ app.get("/reghos",function(req,res,next){
 });
 
 app.get("/analytics",function(req,res,next){
-		res.render("anal.ejs",{currentUser:req.user});
+	Hospital.findOne({_id:req.user.hospitalid},function(err,hospital){
+		if(err)
+		console.log(err);
+		else{
+			
+			res.render('anal.ejs',{currentUser:req.user,hospital:hospital});
+		}
+	
+		});
+	
 });
 
 app.get('/bot',function(req,res,next){
@@ -178,6 +187,19 @@ app.post("/addpatient",function(req,res){
 
 		var data={name:req.body.name,location:req.body.location,symptoms:req.body.symptoms,contact:req.body.contact,status:req.body.status,bg:req.body.bg,bedno:req.body.bedno,vent:req.body.vent,remarks:req.body.remarks,admdate:req.body.admdate,hospitalid:req.body.hospitalid};
 	   
+	// 	if(req.body.vent)
+	//    {
+	// 	Hospital.findOneAndUpdate({_id:req.body.hospitalid},{ventilators:Number(req.body.ventilators)-1},function(err){
+	// 		if (err) console.log(err);
+	// 	});
+	//    }
+	//    else
+	//    {
+	// 	Hospital.findOneAndUpdate({_id:req.body.hospitalid},{beds:Number(req.body.beds)-1},function(err){
+	// 		if (err) console.log(err);
+	// 	});
+	//    }
+
 		Patient.create(data,function(err,newpatient){
 		   if(err)
 		   console.log(err);
@@ -188,8 +210,11 @@ app.post("/addpatient",function(req,res){
 			
 		   }
 		   
-	   })
+	   });
 	});
+	  
+	   
+
 
 	app.get("/viewall",function(req,res){
 		Patient.find({hospitalid:req.user.hospitalid},function(err,patient){
