@@ -7,6 +7,7 @@ var passport=require('passport');
 var LocalStrategy=require('passport-local');
 var User=require('./models/user');
 var Hospital=require('./models/hospital.js');
+var Patient=require('./models/patient.js');
 var nodemailer = require('nodemailer');
 mongoose.connect("mongodb+srv://divesh:dev123456789@cluster0.l6u2q.mongodb.net/covid_care?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true });
 
@@ -120,3 +121,19 @@ app.get("/addpatient",function(req,res){
 	res.render('patient.ejs',{currentUser:req.user})
 });
 
+app.post("/addpatient",function(req,res){
+
+		var data={name:req.body.name,location:req.body.location,symptoms:req.body.symptoms,contact:req.body.contact,status:req.body.status,bg:req.body.bg,bedno:req.body.bedno,vent:req.body.vent,remarks:req.body.remarks,admdate:req.body.admdate};
+	   
+		Patient.create(data,function(err,newpatient){
+		   if(err)
+		   console.log(err);
+		   else
+		   {
+			
+			res.redirect('/dash');
+			
+		   }
+		   
+	   })
+	});
