@@ -36,6 +36,7 @@
             <button class="loc" onclick="load()"> <img src="/assets/location.png" alt=""></button>
             <form action="/addpatient" method="POST">
                 <input type="text" name="name" placeholder="Name" required class="inname"><br>
+                <input type="text" name="hospitalid" style="display: none;" value="<%=hospital._id%>">
                
                 <input type="text" name="location" placeholder="Location" class="geoloc" required><br>
                 <input type="text" name="symptoms" placeholder="Current Symptoms" required><br>

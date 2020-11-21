@@ -13,7 +13,8 @@ var PatientSchema= new mongoose.Schema({
         default:false
     },
     remarks:String,
-    admdate:Date
+    admdate:Date,
+    hospitalid:String
 
 });
 

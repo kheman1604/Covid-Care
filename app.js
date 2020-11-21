@@ -11,6 +11,7 @@ var User=require('./models/user');
 var Hospital=require('./models/hospital.js');
 var Patient=require('./models/patient.js');
 var nodemailer = require('nodemailer');
+const { compile } = require('ejs');
 // A unique identifier for the given session
 const sessionId = uuid.v4();
 mongoose.connect("mongodb+srv://divesh:dev123456789@cluster0.l6u2q.mongodb.net/covid_care?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true });
@@ -133,6 +134,7 @@ app.post("/signup",function(req,res){
 		else
 		res.send("Error in mail id");
 	});
+});
 	app.get("/dash",function(req,res){
 		Hospital.findOne({_id:req.user.hospitalid},function(err,hospital){
 		if(err)
@@ -144,18 +146,26 @@ app.post("/signup",function(req,res){
 	
 		});
 	
-	})
+	});
 	
 	
-});
+
 
 app.get("/addpatient",function(req,res){
-	res.render('patient.ejs',{currentUser:req.user})
+	Hospital.findOne({_id:req.user.hospitalid},function(err,hospital){
+		if(err)
+		console.log(err);
+		else{
+			
+			res.render('patient.ejs',{currentUser:req.user,hospital:hospital});
+		}
+	
+		});
 });
 
 app.post("/addpatient",function(req,res){
 
-		var data={name:req.body.name,location:req.body.location,symptoms:req.body.symptoms,contact:req.body.contact,status:req.body.status,bg:req.body.bg,bedno:req.body.bedno,vent:req.body.vent,remarks:req.body.remarks,admdate:req.body.admdate};
+		var data={name:req.body.name,location:req.body.location,symptoms:req.body.symptoms,contact:req.body.contact,status:req.body.status,bg:req.body.bg,bedno:req.body.bedno,vent:req.body.vent,remarks:req.body.remarks,admdate:req.body.admdate,hospitalid:req.body.hospitalid};
 	   
 		Patient.create(data,function(err,newpatient){
 		   if(err)
@@ -168,4 +178,53 @@ app.post("/addpatient",function(req,res){
 		   }
 		   
 	   })
+	});
+
+	app.get("/viewall",function(req,res){
+		Patient.find({hospitalid:req.user.hospitalid},function(err,patient){
+			if(err)
+			console.log(err);
+			else
+			res.render("view.ejs",{currentUser:req.body.user,patient:patient});
+ 
+		});
+	});
+
+	app.get("/viewpat/:id",function(req,res){
+		Patient.findOne({_id:req.params.id},function(err,result){
+			if(err)
+			console.log(err)
+			else
+			res.render("viewpat.ejs",{currentUser:req.body.user,patient:result});
+		});
+	});
+
+	app.get("/modify",function(req,res){
+		Patient.find({hospitalid:req.user.hospitalid},function(err,patient){
+			if(err)
+			console.log(err);
+			else
+			res.render("modifyall.ejs",{currentUser:req.body.user,patient:patient});
+ 
+		});
+	});
+
+	app.get("/modify/:id",function(req,res){
+		Patient.findOne({_id:req.params.id},function(err,result){
+			if(err)
+			console.log(err)
+			else
+			res.render("modify.ejs",{currentUser:req.body.user,patient:result});
+		});
+	});
+
+	app.post("/modify/:id",function(req,res){
+
+		var data={name:req.body.name,location:req.body.location,symptoms:req.body.symptoms,contact:req.body.contact,status:req.body.status,bg:req.body.bg,bedno:req.body.bedno,vent:req.body.vent,remarks:req.body.remarks};
+	   
+		Patient.findOneAndUpdate({_id:req.params.id},data,function(err){
+			if (err) console.log(err);
+			return res.redirect('/dash');
+
+		})
 	});
