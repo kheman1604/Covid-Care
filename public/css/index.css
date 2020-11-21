@@ -15,7 +15,7 @@ ul li a i{
     position: absolute;
     left: 0%;
     top: 0%;
-  background: url(assets/main.png);
+  background: url(/assets/main.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
