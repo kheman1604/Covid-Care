@@ -17,7 +17,12 @@
             <form method='post' action="/signup">
                 <input type="text" name="username" class="username" placeholder="Enter Name"><br><br>
                 <input type="text" name="email" class="email" placeholder="Enter Email-Id"><br><br>
-                <input type="text" name="hospital" class="email" placeholder="Enter Hospital Name"><br><br>
+                <select class="email" name="hospital">
+                    <% hospitals.forEach(function(h){ %>
+                      <option value="<%=h._id%>"><%=h.name%></option>
+                      <%});%>
+                  </select>
+                <br><br>
                 <input type="password" name="password" class="password" placeholder="Create a Password"><br><br>
           
                 <button>SignUp</button>
