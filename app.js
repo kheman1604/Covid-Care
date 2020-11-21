@@ -1,3 +1,5 @@
+const dialogflow = require('@google-cloud/dialogflow');
+const uuid = require('uuid');
 var express=require('express');
 var app=express();
 var path=require('path');
@@ -9,6 +11,8 @@ var User=require('./models/user');
 var Hospital=require('./models/hospital.js');
 var Patient=require('./models/patient.js');
 var nodemailer = require('nodemailer');
+// A unique identifier for the given session
+const sessionId = uuid.v4();
 mongoose.connect("mongodb+srv://divesh:dev123456789@cluster0.l6u2q.mongodb.net/covid_care?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true });
 
 app.use(express.static(path.join(__dirname, '/public')));
@@ -18,6 +22,15 @@ app.use(require("express-session")({
 	resave:false,
 	saveUninitialized: false
 }));
+
+app.use(function (req, res, next) {
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+  });
 
 var transporter = nodemailer.createTransport({
 	service: 'gmail',
