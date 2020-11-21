@@ -203,6 +203,27 @@ h4{
     transition: 0.3s;
 }
 
+.user{
+    width: 15%;
+    background-color: #272343;
+    color:white;
+    padding: 0.5%;
+    margin-top: 25%;
+    margin-left: 42%;
+    transition: 0.3s;
+    
+}
+.delete{
+    margin-top:0% ;
+}
+
+.user:hover{
+    background-color: #ff5e3a;
+    border-color:#ff5e3a;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
 
 .card {
     float: left;
