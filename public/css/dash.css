@@ -88,6 +88,18 @@ li a {
     color: #ff5e3a;
     transition: 0.5s;
 }
+.one{
+    position: absolute;
+    top: 60%;
+    left: 15%;
+}
+
+.two{
+    position: absolute;
+    top: 70%;
+    left: 25%;
+}
+
 
 .card2{
     background-color: #f5f5f5;
