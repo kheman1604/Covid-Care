@@ -51,13 +51,59 @@ body {
           transform: scale(1.2);
 }
 
+h1{
+  color:  #ff5e3a;
+  text-align: center;
+  margin-top: 3%;
+}
 
+.boti{
+  border-radius: 300px;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    background-image: url(/assets/botmain.png);
+    background-size: cover;
+    margin-left: 36%;
+    margin-top: 4%;
+    background-position: 50% 50%;
+    transition: 0.3s;
+}
+
+.boti:hover{
+  box-shadow: 0 16px 30px 0 rgba(0, 0, 0, 0.507);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.pa{
+  font-size:15px;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+.t{
+  color: #272343;
+  text-align: center;
+  margin-top: 33%;
+}
+#h{
+  display: none;
+  margin-top: 0%;
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+.boti:hover #h{
+  display: block;
+  transition: 0.3s;
+}
 
 .chat {
   position: fixed;
-  top: 30%;
-  left: 75%;
-  width: 20%;
+  top: 28%;
+  left: 18%;
+  width: 60%;
   height: 100%;
   max-height: 60vh;
   z-index: 2;
@@ -303,6 +349,7 @@ Message Box
   top: 9px;
   right: 10px;
   color: #fff;
+  width:10%;
   border: none;
   background: #a5d1d1;
   font-size: 10px;
@@ -494,7 +541,7 @@ ul li{
 }
 .fa-microphone{
   position: absolute;
-  left: 60%;
+  left: 80%;
   font-size: 24px;
   color: #a5d1d1;
 }
@@ -515,7 +562,7 @@ ul li{
   outline: none;
   border: none;
   top:90%;
-  left:95%;
+  left:45%;
   background-image:url(/assets/tNdu-jYT_400x400.jpg);
   background-size: contain;
   background-repeat: no-repeat;

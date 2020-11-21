@@ -8,8 +8,14 @@
 
     <body>
        <div class="daba">
-
+   
         <div class="container">
+            <h1>Help Section</h1>
+            <p class="pa">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque odio quam nesciunt, harum ipsa doloribus similique vel deleniti dolores fugiat corrupti repellat id possimus! Quisquam ipsa voluptatibus officia necessitatibus doloremque.</p>
+            <div class="boti">
+               <p id='h'>Hello there I am CoviBot!</p>
+            </div>
+            <h2 class="t">Click on the button below for queries</h2>
             <div class="chat" id="chat">
                 <div class="chat-title">
                   <h1>Covi Bot</h1>
@@ -129,7 +135,7 @@
               
               function fetchmsg(){
               
-                   var url = 'http://localhost:8080/send-msg';
+                   var url = 'http://localhost:3000/send-msg';
                     
                     const data = new URLSearchParams();
                     for (const pair of new FormData(document.getElementById("mymsg"))) {
