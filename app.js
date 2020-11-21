@@ -66,6 +66,10 @@ app.post('/login',passport.authenticate('local',{failureRedirect:'/login'}),func
 app.get("/reghos",function(req,res,next){
 	res.render("reghos.ejs");
 });
+
+app.get('/bot',function(req,res,next){
+	res.render("bot.ejs");
+});
 app.post("/reghos",function(req,res){
     var newhosp={name:req.body.name,pattern:req.body.pattern,address:req.body.address,phone:req.body.phone,beds:req.body.beds,ventilators:req.body.ventilators};
    
