@@ -34,19 +34,19 @@
             <div class="right">
             <h1>Patient Information</h1><br>
             <div class="dinfo">
-
+                <ul class=".info">
+                    <li>Patient Name: <%=patient.name%></li><br><br>
+                    <li>Patient Address: <%=patient.location%></li><br><br>
+                    <li>Current Symptoms: <%=patient.symptoms%></li><br><br>
+                    <li>Phone Number: <%=patient.contact%></li><br><br>
+                    <li>Status: <%=patient.status%></li><br><br>
+                    <li>Bloodgroup: <%=patient.bg%></li><br><br>
+                    <li>Bed No: <%=patient.bedno%></li><br><br>
+                    <li>General Remarks: <%=patient.remarks%></li><br><br>
+                    <li>Admitted On: <%=patient.admdate%></li><br><br>
+                </ul>
             </div>
-            <ul class=".info">
-                <li>Patient Name: <%=patient.name%></li><br><br>
-                <li>Patient Address: <%=patient.location%></li><br><br>
-                <li>Current Symptoms: <%=patient.symptoms%></li><br><br>
-                <li>Phone Number: <%=patient.contact%></li><br><br>
-                <li>Status: <%=patient.status%></li><br><br>
-                <li>Bloodgroup: <%=patient.bg%></li><br><br>
-                <li>Bed No: <%=patient.bedno%></li><br><br>
-                <li>General Remarks: <%=patient.remarks%></li><br><br>
-                <li>Admitted On: <%=patient.admdate%></li><br><br>
-            </ul>
+            
             <button onclick="download()">Download as PDF</button>
             </div>
         </div>
@@ -78,7 +78,7 @@
                                 'elementHandlers': specialElementHandlers
                             },
                     function(dispose) {
-                        pdf.save('applicants.pdf');
+                        pdf.save('patient.pdf');
                         console.log('pdf downloaded')
                     }
                     , margins);
