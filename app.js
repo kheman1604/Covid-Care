@@ -95,43 +95,58 @@ app.get("/signup",function(req,res){
 
 });
 app.post("/signup",function(req,res){
-	var newUser= new User({username:req.body.username,ename:req.body.ename,hospitalid:req.body.hospital});
-	User.register(newUser,req.body.password,function(err,user){
-		if(err)
-			{
-				console.log(err);
-				res.redirect('/signup');
-			}
-		else{
-			var mailOptions = {
-				from: 'covidcare96@gmail.com',
-				to:req.body.username ,
-				subject: 'Sign Up Confirmation',
-                text: "You can now access the portal."
-			  };
-			  
- transporter.sendMail(mailOptions, function(error, info){
-	if (error) {
-	  console.log(error);
-	} else {
-	  console.log('Email sent: ' + info.response);
-	}
-  });
-  
-			res.redirect('/login');
-		}
-	});
-});
-app.get("/dash",function(req,res){
-	Hospital.findOne({_id:req.user.hospitalid},function(err,hospital){
-	if(err)
-	console.log(err);
-	else{
+	
 		
-		res.render("dash.ejs",{currentUser:req.user,hospital:hospital});
-	}
-
+	Hospital.findOne({_id:req.body.hospital},function(err,result){
+		var p=result.pattern;
+		var regex=new RegExp("^[a-zA-Z0-9.!#$%&'*+=?^_`{​​​​|}​​​​~-]+"+p+"*$");
+	console.log(regex);
+		if(regex.test(req.body.username)){
+			var newUser= new User({username:req.body.username,ename:req.body.ename,hospitalid:req.body.hospital});
+		User.register(newUser,req.body.password,function(err,user){
+			if(err)
+				{
+					console.log(err);
+					res.redirect('/signup');
+				}
+			else{
+				var mailOptions = {
+					from: 'covidcare96@gmail.com',
+					to:req.body.username ,
+					subject: 'Sign Up Confirmation',
+					text: "You can now access the portal."
+				  };
+				  
+	 transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+		  console.log(error);
+		} else {
+		  console.log('Email sent: ' + info.response);
+		}
+	  });
+	  
+				res.redirect('/login');
+			}
+		});
+	
+		}
+		else
+		res.send("Error in mail id");
 	});
+	app.get("/dash",function(req,res){
+		Hospital.findOne({_id:req.user.hospitalid},function(err,hospital){
+		if(err)
+		console.log(err);
+		else{
+			
+			res.render("dash.ejs",{currentUser:req.user,hospital:hospital});
+		}
+	
+		});
+	
+	})
+	
+	
 });
 
 app.get("/addpatient",function(req,res){
