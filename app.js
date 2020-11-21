@@ -109,10 +109,14 @@ app.get("/dash",function(req,res){
 	if(err)
 	console.log(err);
 	else{
-		console.log(hospital)
+		
 		res.render("dash.ejs",{currentUser:req.user,hospital:hospital});
 	}
 
 	});
+});
+
+app.get("/addpatient",function(req,res){
+	res.render('patient.ejs',{currentUser:req.user})
 });
 
