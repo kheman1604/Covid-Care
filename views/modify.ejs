@@ -32,26 +32,24 @@
     <div class="image"></div>
     <div class="img"></div> 
     
-    <form action="">
-        <input type="text" name="name" placeholder="Name" required class="inname" value=""><br>
+    <form action="/modify/<%=patient._id%>" method="POST">
+        <input type="text" name="name" placeholder="Name" required class="inname" value="<%=patient.name%>"><br>
                
-        <input type="text" name="location" placeholder="Location" class="geoloc" required value=""><br>
-        <input type="text" name="simp" placeholder="Current Symptoms" required value=""><br>
-        <input type="text" name="contact" placeholder="Phone Number" required value=""><br>
-        <select name="status" id="" value="">
-            <option hidden selected>Select from the following status</option>
+        <input type="text" name="location" placeholder="Location" class="geoloc" required value="<%=patient.location%>"><br>
+        <input type="text" name="symptoms" placeholder="Current Symptoms" required value="<%=patient.symptoms%>"><br>
+        <input type="text" name="contact" placeholder="Phone Number" required value="<%=patient.contact%>"><br>
+        <select name="status" id="" value="<%=patient.status%>">
             <option value="recovered">Recovered</option>
             <option value="infected">Infected</option>
             <option value="deceased ">Deceased </option>
         </select><br>
-        <input type="text" name="bloodgroup" placeholder="Blood group" required value=""><br>
-        <input type="text" name="bedno" placeholder="Assigned to bed " required value=""><br>
-        <select name="vent" id="" value="">
-            <option hidden selected>Ventilator in use?</option>
+        <input type="text" name="bg" placeholder="Blood group" required value="<%=patient.bg%>"><br>
+        <input type="text" name="bedno" placeholder="Assigned to bed " required value="<%=patient.bedno%>"><br>
+        <select name="vent" id="" value="<%=patient.vent%>">
             <option value="yes">Yes</option>
             <option value="no">No</option>
         </select>
-        <textarea placeholder="Remarks" maxlength="200" value=""></textarea><br><br>
+        <textarea placeholder="Remarks" maxlength="200" value="<%=patient.remarks%>"></textarea><br><br>
 
         <button>Submit</button>
     </form>
