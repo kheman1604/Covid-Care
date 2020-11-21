@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/modify.css">
+    </head>
+
+    <body>
+        <nav>
+            
+            <ul>
+                <li style="margin-left: 11%; text-transform: uppercase; color: #2c365d; font-weight: bolder;float: left;font-size: x-large;"><a href="/">COVID CARE</a></li>
+                <div style="float: right;margin-right: 13%;">
+                    <li><a href="/hosdash">Beds</a></li>
+                    <li><a href="/notification">Notifications</a></li>
+                    <li><a href="/contact">Helpline</a></li>
+                    <li><a href="/dash">Dashboard</a></li>
+                    <li><a href="/analytics">Analytics</a></li>
+                    <% if(!currentUser){ %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/signup">Signup</a></li>
+                    <%	} else { %>
+                    <li><a href="/logout">Logout</a></li>
+                    <%	} %>	
+                </div>
+               
+            </ul>
+        </nav>
+       
+		
+		
+<div class="ocontainer">
+    <h1>Edit Patient Data</h1>
+    <div class="image"></div>
+    <div class="img"></div> 
+    
+    <form action="">
+        <input type="text" name="name" placeholder="Name" required class="inname" value=""><br>
+               
+        <input type="text" name="location" placeholder="Location" class="geoloc" required value=""><br>
+        <input type="text" name="simp" placeholder="Current Symptoms" required value=""><br>
+        <input type="text" name="contact" placeholder="Phone Number" required value=""><br>
+        <select name="status" id="" value="">
+            <option hidden selected>Select from the following status</option>
+            <option value="recovered">Recovered</option>
+            <option value="infected">Infected</option>
+            <option value="deceased ">Deceased </option>
+        </select><br>
+        <input type="text" name="bloodgroup" placeholder="Blood group" required value=""><br>
+        <input type="text" name="bedno" placeholder="Assigned to bed " required value=""><br>
+        <select name="vent" id="" value="">
+            <option hidden selected>Ventilator in use?</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <textarea placeholder="Remarks" maxlength="200" value=""></textarea><br><br>
+
+        <button>Submit</button>
+    </form>
+</div>  
+
+</body>
+</html>

@@ -123,6 +123,19 @@ button:hover{
     color: #f2f2f0;
     transition: 0.3s;
 }
+select{
+    background-color:transparent;
+    padding: 2%;
+    outline: none;
+    width:50%;
+    color: rgb(87, 84, 84);
+    border: none;
+    border-bottom: 1px solid #d7d8db;
+}
+option{
+    background-color: #272343;
+    color: #d7d8db;
+}
 
 @media only screen and (max-width:500px){
     .top,.bottom{
@@ -163,5 +176,9 @@ button:hover{
     button{
         width: 40%;
         left: 30%;
+    }
+
+    select{
+        width: 100%;
     }
 }
