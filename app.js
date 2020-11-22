@@ -273,7 +273,6 @@ app.post("/addpatient",function(req,res){
 		})
 	});
 
-<<<<<<< HEAD
 	app.post("/view/search",function(req,res){
 		var name=req.body.name.toLowerCase();
 		
@@ -305,7 +304,6 @@ app.post("/addpatient",function(req,res){
 			
 		})
 	});
-=======
 	app.post("/send-msg",(req,resp)=>{
 		runSample(req.body.MSG).then(data=>{
 			resp.send({Reply : data});
@@ -352,4 +350,3 @@ async function runSample(msg,projectId = 'covi-bot-jdiu') {
   
 	return result.fulfillmentText ;
   }
->>>>>>> bbeb56635d8efdc3226f2a6776aedb530c0af555
