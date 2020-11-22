@@ -14,7 +14,12 @@ var nodemailer = require('nodemailer');
 const { compile } = require('ejs');
 // A unique identifier for the given session
 const sessionId = uuid.v4();
-mongoose.connect("mongodb+srv://divesh:dev123456789@cluster0.l6u2q.mongodb.net/covid_care?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true });
+require('dotenv').config;
+var uri = process.env.MONGODBURI;
+var pass = prcoess.env.NODEMAILER;
+mongoose.connect(uri,{ useNewUrlParser: true , useUnifiedTopology: true });
+
+
 
 app.use(express.static(path.join(__dirname, '/public')));
 //passport config
@@ -37,7 +42,7 @@ var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
 	  user: 'covidcare96@gmail.com',
-	  pass: 'covidop123'
+	  pass: pass
 	}
   });
 
@@ -280,6 +285,11 @@ app.post("/addpatient",function(req,res){
 		});
 		
 		
+	});
+
+	app.get('/logout',function(req,res){
+		req.logOut();
+		res.redirect('/');
 	});
 	
 	app.post("/modify/:id",function(req,res){

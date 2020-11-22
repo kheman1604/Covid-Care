@@ -4,7 +4,8 @@
   "description": "rookie hackthon website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app.js"
   },
   "author": "abhishek divesh kheman",
   "license": "ISC",
@@ -13,6 +14,8 @@
     "body-parser": "^1.19.0",
     "connect-redis": "^5.0.0",
     "dialogflow": "^1.2.0",
+    "dot-env": "0.0.1",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
