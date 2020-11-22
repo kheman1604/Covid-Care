@@ -16,7 +16,7 @@ const { compile } = require('ejs');
 const sessionId = uuid.v4();
 require('dotenv').config;
 var uri = process.env.MONGODBURI;
-var pass = prcoess.env.NODEMAILER;
+var pass = process.env.NODEMAILER;
 mongoose.connect(uri,{ useNewUrlParser: true , useUnifiedTopology: true });
 
 
