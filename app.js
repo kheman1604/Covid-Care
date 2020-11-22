@@ -309,9 +309,9 @@ app.post("/addpatient",function(req,res){
 		})
 	});
 	
-	app.post("/modify/search",function(req,res){
+	app.post("/modifyall/searchall",function(req,res){
 		var name=req.body.name;
-		
+		console.log(name);
 		Patient.find({name:name},function(err,patients){
 			if(err)
 			console.log(err);
