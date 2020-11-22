@@ -46,7 +46,22 @@ h2{
     top: 4%;
     left: 13%;
 }
+.dn{
+    position: absolute;
+    top: 35%;
+    width: 50%;
+    height: 50%;
+}
 
+
+.bar{
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    width: 50%;
+    height: 50%;
+
+}
 ul{
   
     top: 3%;

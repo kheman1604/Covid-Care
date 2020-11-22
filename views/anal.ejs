@@ -34,8 +34,14 @@
         <h1>Analytics</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati perferendis fugit minima mollitia autem nesciunt laboriosam cupiditate eos vero. Nostrum eveniet qui accusantium rem accusamus totam, perferendis repellendus sint cum?</p>
     </div>
-    <canvas id="canvas1" style="max-width:800px; max-height:800px; margin-left: auto;margin-right: auto;margin-top: 4%;"></canvas>
-    <canvas id="canvas2" style="max-width:800px; max-height:800px; margin-left: auto;margin-right: auto;margin-top: 4%;"></canvas>
+    <div class="dn"> 
+        <canvas id="canvas1" style="max-width:800px; max-height:800px; margin-left: auto;margin-right: auto;margin-top: 4%;"></canvas>
+    </div>
+    <div class="bar">
+        <canvas id="canvas2" style="max-width:800px; max-height:800px; margin-left: auto;margin-right: auto;margin-top: 4%;"></canvas>
+    </div>
+
+    
 </div>  
 <%  let v=hospital.ventilators; let b=hospital.beds %>
 <% let r=hospital.recovered;let d=hospital.deceased;let a=hospital.admitted; %>
@@ -49,8 +55,11 @@
                     var chardata = {
                         labels: l1,
                         datasets: [{
+                            backgroundColor:['#6f82d6','#c2c3c5'],
                             label: 'Availabilty',
                             data: c1,
+                          
+                            
                         }]
                     }
 
@@ -58,7 +67,16 @@
 
                     var piegraph = new Chart(ctx1, {
                         type: 'doughnut',
-                        data: chardata
+                        data: chardata,
+                        options: {
+                                title: {
+                                    display: true,
+                                    text: 'Beds and Ventilator Availibility'
+                                }
+                                
+                            }
+                        
+                        
                     });
 
                     l2=['Recoverd','Admitted','Deceased'];
@@ -66,8 +84,11 @@
                     var chardata = {
                         labels: l2,
                         datasets: [{
+                            backgroundColor:['#2C365D','#ea5455','#ff5e3a'],
                             label: 'Count',
                             data: c2,
+                           
+                            
                         }]
                     }
 
@@ -75,7 +96,15 @@
 
                     var bargraph = new Chart(ctx2, {
                         type: 'bar',
-                        data: chardata
+                        data: chardata,
+                        options: {
+                                title: {
+                                    display: true,
+                                    text: 'Recovered,Deceased and Admitted'
+                                }
+                                
+                            }
+                       
                     });
 
 
