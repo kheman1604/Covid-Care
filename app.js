@@ -274,7 +274,7 @@ app.post("/addpatient",function(req,res){
 	});
 
 	app.post("/view/search",function(req,res){
-		var name=req.body.name.toLowerCase();
+		var name=req.body.name;
 		
 		Patient.find({name:name},function(err,patients){
 			if(err)
@@ -290,7 +290,7 @@ app.post("/addpatient",function(req,res){
 	});
 	
 	app.post("/modify/search",function(req,res){
-		var name=req.body.name.toLowerCase();
+		var name=req.body.name;
 		
 		Patient.find({name:name},function(err,patients){
 			if(err)
