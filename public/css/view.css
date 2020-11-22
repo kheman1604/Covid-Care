@@ -133,7 +133,26 @@ h4{
     box-shadow: 0 16px 30px 0 rgba(0, 0, 0, 0.507);
     transition: 0.3s;
 }
+button{
+    border-radius: 25px;
+    border: 1px solid #2c365d;
+    background-color: transparent;
+    color: #2c365d;
+    width: 20%;
+    outline: none;
+    position: absolute;
+    left: 40%;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 1%;
+}
 
+button:hover{
+    background-color:#272e4f;
+    color: #f2f2f0;
+    transition: 0.3s;
+}
 
 .card {
     float: left;
