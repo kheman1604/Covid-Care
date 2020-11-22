@@ -273,5 +273,34 @@ app.post("/addpatient",function(req,res){
 		})
 	});
 
+	app.post("/view/search",function(req,res){
+		var name=req.body.name.toLowerCase();
+		
+		Patient.find({name:name},function(err,patients){
+			if(err)
+			console.log(err);
+			else
+			{
+
+					res.render('view.ejs',{currentUser:req.body.user,patient:patients});
+
+			}
+			
+		})
+	});
 	
-	
+	app.post("/modigy/search",function(req,res){
+		var name=req.body.name.toLowerCase();
+		
+		Patient.find({name:name},function(err,patients){
+			if(err)
+			console.log(err);
+			else
+			{
+
+					res.render('modifyall.ejs',{currentUser:req.body.user,patient:patients});
+
+			}
+			
+		})
+	});
