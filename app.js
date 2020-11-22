@@ -89,7 +89,7 @@ app.get("/analytics",function(req,res,next){
 });
 
 app.get('/bot',function(req,res,next){
-	res.render("bot.ejs");
+	res.render("bot.ejs",{currentUser:req.user});
 });
 app.post("/reghos",function(req,res){
     var newhosp={name:req.body.name,pattern:req.body.pattern,address:req.body.address,phone:req.body.phone,beds:req.body.beds,ventilators:req.body.ventilators};
@@ -273,6 +273,7 @@ app.post("/addpatient",function(req,res){
 		})
 	});
 
+<<<<<<< HEAD
 	app.post("/view/search",function(req,res){
 		var name=req.body.name.toLowerCase();
 		
@@ -289,7 +290,7 @@ app.post("/addpatient",function(req,res){
 		})
 	});
 	
-	app.post("/modigy/search",function(req,res){
+	app.post("/modify/search",function(req,res){
 		var name=req.body.name.toLowerCase();
 		
 		Patient.find({name:name},function(err,patients){
@@ -304,3 +305,51 @@ app.post("/addpatient",function(req,res){
 			
 		})
 	});
+=======
+	app.post("/send-msg",(req,resp)=>{
+		runSample(req.body.MSG).then(data=>{
+			resp.send({Reply : data});
+		})
+	});
+	
+	/**
+ * Send a query to the dialogflow agent, and return the query result.
+ * @param {string} projectId The project to be used
+ */
+async function runSample(msg,projectId = 'covi-bot-jdiu') {
+  
+
+	// Create a new session
+	const sessionClient = new dialogflow.SessionsClient({
+		keyFilename:"covi-bot-jdiu-8131c217fd56.json"
+	});
+	const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
+  
+	// The text query request.
+	const request = {
+	  session: sessionPath,
+	  queryInput: {
+		text: {
+		  // The query to send to the dialogflow agent
+		  text: msg,
+		  // The language used by the client (en-US)
+		  languageCode: 'en-US',
+		},
+	  },
+	};
+  
+	// Send request and log result
+	const responses = await sessionClient.detectIntent(request);
+	console.log('Detected intent');
+	const result = responses[0].queryResult;
+	console.log(`  Query: ${result.queryText}`);
+	console.log(`  Response: ${result.fulfillmentText}`);
+	if (result.intent) {
+	  console.log(`  Intent: ${result.intent.displayName}`);
+	} else {
+	  console.log(`  No intent matched.`);
+	}
+  
+	return result.fulfillmentText ;
+  }
+>>>>>>> bbeb56635d8efdc3226f2a6776aedb530c0af555
